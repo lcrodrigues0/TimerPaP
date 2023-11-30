@@ -52,24 +52,25 @@ class ViewController: UIViewController {
     }
     
     @objc func timerCounter() -> Void {
-        print("Sim")
         count = count + 1
-        let time = secondsToHoursMinutesSeconds(secondes: count)
+        let time = secondsToHoursMinutesSeconds(seconds: count)
+        print(time.2)
         let timeString = makeTimeString(hours: time.0, minutes: time.1, seconds: time.2)
         TimerLabel.text = timeString
     }
     
-    func secondsToHoursMinutesSeconds(secondes : Int) -> (Int, Int, Int){
-        return (secondes / 3600, (secondes % 3600) / 60, ((secondes % 3600) % 60) / 60)
+    func secondsToHoursMinutesSeconds(seconds : Int) -> (Int, Int, Int){
+        return ((seconds/3600), ((seconds % 3600) / 60), ((seconds % 3600) % 60))
     }
     
     func makeTimeString(hours : Int, minutes : Int, seconds : Int) -> String{
         var timeString = ""
-        timeString += String(format:"%02d", hours)
+        timeString += String(format: "%02d", hours)
         timeString += " : "
-        timeString += String(format:"%02d", minutes)
+        timeString += String(format: "%02d", minutes)
         timeString += " : "
-        timeString += String(format:"%02d", seconds)
+        timeString += String(format: "%02d", seconds)
+        
         return timeString
 
     }
